@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kana Audio Quiz with GIFs</title>
+<title>Kana Audio Quiz with GIFs & Retry</title>
 <style>
 body {
   font-family:"Hiragino Kaku Gothic Pro","Meiryo",sans-serif;
@@ -22,6 +22,8 @@ button {font-size:18px;padding:12px 24px;margin:10px;border-radius:12px;cursor:p
 .choice:hover {background:#ff4da6;}
 #result {font-size:20px;margin-top:20px;font-weight:bold;}
 #gif {margin-top:20px;max-width:250px;border-radius:12px;}
+#retry {display:none;background:#4caf50;color:white;border:2px solid #4caf50;}
+#retry:hover {background:#66bb6a;}
 </style>
 </head>
 <body>
@@ -30,64 +32,26 @@ button {font-size:18px;padding:12px 24px;margin:10px;border-radius:12px;cursor:p
 <div id="choices"></div>
 <div id="result"></div>
 <img id="gif" src="" alt="" />
-
-<audio id="あ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/a.mp3"></audio>
-<audio id="い" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/i.mp3"></audio>
-<audio id="う" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/u.mp3"></audio>
-<audio id="え" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/e.mp3"></audio>
-<audio id="お" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/o.mp3"></audio>
+<button id="retry">🔄 Retry Quiz</button>
 
 <audio id="ら" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ra.mp3"></audio>
 <audio id="り" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ri.mp3"></audio>
 <audio id="る" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ru.mp3"></audio>
 <audio id="れ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/re.mp3"></audio>
 <audio id="ろ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ro.mp3"></audio>
-
 <audio id="や" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ya.mp3"></audio>
 <audio id="ゆ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/yu.mp3"></audio>
 <audio id="よ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/yo.mp3"></audio>
-
 <audio id="りゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/rya.mp3"></audio>
 <audio id="りゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ryu.mp3"></audio>
 <audio id="りょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/ryo.mp3"></audio>
 
-<audio id="きゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/kya.mp3"></audio>
-<audio id="きゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/kyu.mp3"></audio>
-<audio id="きょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/kyo.mp3"></audio>
-<audio id="しゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/sha.mp3"></audio>
-<audio id="しゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/shu.mp3"></audio>
-<audio id="しょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/sho.mp3"></audio>
-<audio id="ちゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/cha.mp3"></audio>
-<audio id="ちゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/chu.mp3"></audio>
-<audio id="ちょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/cho.mp3"></audio>
-<audio id="にゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/nya.mp3"></audio>
-<audio id="にゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/nyu.mp3"></audio>
-<audio id="にょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/nyo.mp3"></audio>
-<audio id="ひゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/hya.mp3"></audio>
-<audio id="ひゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/hyu.mp3"></audio>
-<audio id="ひょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/hyo.mp3"></audio>
-<audio id="みゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/mya.mp3"></audio>
-<audio id="みゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/myu.mp3"></audio>
-<audio id="みょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/myo.mp3"></audio>
-<audio id="びゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/bya.mp3"></audio>
-<audio id="びゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/byu.mp3"></audio>
-<audio id="びょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/byo.mp3"></audio>
-<audio id="ぴゃ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/pya.mp3"></audio>
-<audio id="ぴゅ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/pyu.mp3"></audio>
-<audio id="ぴょ" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/pyo.mp3"></audio>
-<audio id="ん" src="https://raw.githubusercontent.com/Kuuuube/kana-quiz-sounds/master/audio/0/n.mp3"></audio>
-  
 <script>
-const sounds = [
-  "ら","り","る","れ","ろ",
-  "や","ゆ","よ",
-  "りゃ","りゅ","りょ"
-];
-
+const sounds = ["ら","り","る","れ","ろ","や","ゆ","よ","りゃ","りゅ","りょ"];
 let currentKana = "";
 let questionCount = 0;
 let score = 0;
-const maxQuestions = 25; // shorter for demonstration
+const maxQuestions = 25;
 
 function newQuestion() {
   if(questionCount >= maxQuestions) return endQuiz();
@@ -108,7 +72,7 @@ function newQuestion() {
     choicesDiv.appendChild(btn);
   });
 
-  document.getElementById('result').textContent = `Q ${questionCount} / ${maxQuestions} — Keep going, you got this! 💪`;
+  document.getElementById('result').textContent = `Q ${questionCount} / ${maxQuestions} — Keep going! 💪`;
 }
 
 function playCurrentSound() {
@@ -120,13 +84,10 @@ function checkAnswer(answer){
   const result = document.getElementById('result');
   if(answer===currentKana){
     score++;
-    const messages = [
-      "Great job! 🌟","Awesome! ✅","You're doing amazing! 💪",
-      "Perfect! 🎯","Keep it up! 🚀"
-    ];
+    const messages = ["Great job! 🌟","Awesome! ✅","You're doing amazing! 💪","Perfect! 🎯","Keep it up! 🚀"];
     result.textContent = `⭕ ${messages[Math.floor(Math.random()*messages.length)]} (${questionCount}/${maxQuestions})`;
   } else {
-    result.textContent = `❌ Wrong! Correct: ${currentKana} — Don't worry, try the next one! (${questionCount}/${maxQuestions})`;
+    result.textContent = `❌ Wrong! Correct: ${currentKana} — Keep trying! (${questionCount}/${maxQuestions})`;
   }
   setTimeout(newQuestion, 1200);
 }
@@ -135,12 +96,13 @@ function endQuiz(){
   document.getElementById('choices').innerHTML='';
   const mEl = document.getElementById('result');
   const gifEl = document.getElementById('gif');
+  const retryBtn = document.getElementById('retry');
   let text="", gif="";
   if(score>=21){
     text="🌟 Perfect Score! You're a kana master! 🌟";
     gif="https://raw.githubusercontent.com/k58835032-notbot/lesson-9-morae/main/cool%20cute%20cat.gif";
   } else if(score>=12){
-    text="👍 Excellent work! Keep practicing and you'll be unstoppable!";
+    text="👍 Excellent work! Keep practicing!";
     gif="https://raw.githubusercontent.com/k58835032-notbot/lesson-9-morae/main/cute%20cat%20walking.gif";
   } else {
     text="🌱 Don’t worry — practice makes perfect!";
@@ -149,10 +111,24 @@ function endQuiz(){
   mEl.textContent = `${text} Score: ${score} / ${maxQuestions}`;
   gifEl.src = gif;
   document.getElementById('playSound').disabled = true;
+  retryBtn.style.display = "inline-block";
+}
+
+function resetQuiz(){
+  score = 0;
+  questionCount = 0;
+  document.getElementById('playSound').disabled = false;
+  document.getElementById('gif').src = "";
+  document.getElementById('retry').style.display = "none";
+  document.getElementById('result').textContent = "Quiz restarted! 🎯";
+  newQuestion();
 }
 
 document.getElementById('playSound').addEventListener('click', playCurrentSound);
+document.getElementById('retry').addEventListener('click', resetQuiz);
+
 newQuestion();
 </script>
 </body>
 </html>
+
